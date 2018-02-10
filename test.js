@@ -7,21 +7,11 @@ var frame_skip_counter = 21;
 var start_time = null;
 
 requestAnimationFrame(function avatar_anime(time){
-    /*if( frame_skip_counter++ < 20) {
-        requestAnimationFrame(avatar_anime);
-        return;
-    }*/
     if(!start_time) start_time=time;
 
     let duration_total = 3000;                  //动画预计持续总时间
     let duration_now = time - start_time ;      //动画目前持续时间
     
-    //调试
-    /*console.log("start_time:",start_time);  
-    console.log("time:",time);
-    console.log("duration_now:",duration_now);
-    console.log("duration_total:",duration_total);
-    */
 
     let progess_time = duration_now/duration_total;  //时间进度
     let progess_anime = function(){                  //动画进度，动画进度和时间进度不对应，以此来实现动画的快慢控制
@@ -49,7 +39,7 @@ requestAnimationFrame(function avatar_anime(time){
             }
             return g_pram*Math.pow(progess_time-fall_b_pram,2) + 1 - Math.pow(z_pram,fall_count-1);
         }
-    }();
+    }(); 
 
     console.log("progess_anime",progess_anime)
     avatar.style.top = 200*progess_anime + "px";
